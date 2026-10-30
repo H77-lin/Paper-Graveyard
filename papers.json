@@ -1,0 +1,47 @@
+[
+  {
+    "title": "The Extended Mind",
+    "authors": "Annie Murphy Paul",
+    "year": "2021",
+    "topic": "认知科学",
+    "status": "",
+    "cover": "cover-1",
+    "summary": "把思考看作身体、环境与工具共同完成的过程。适合作为研究方法与知识管理的入口。",
+    "tags": [
+      "认知",
+      "方法论"
+    ],
+    "url": "https://anniemurphypaul.com/the-extended-mind/",
+    "demo": true
+  },
+  {
+    "title": "A Complete Knowledge Base of Human 3.0",
+    "authors": "Dan Koe",
+    "year": "",
+    "topic": "自我系统",
+    "status": "",
+    "cover": "cover-2",
+    "summary": "一份以个人系统、成长阶段与行动循环为线索的知识地图，适合作为跨主题索引。",
+    "tags": [
+      "Human 3.0",
+      "系统"
+    ],
+    "url": "https://thedankoe.com/letters/a-complete-knowledge-base-of-human-3-0/",
+    "demo": true
+  },
+  {
+    "title": "Situated Learning",
+    "authors": "Jean Lave · Etienne Wenger",
+    "year": "1991",
+    "topic": "学习科学",
+    "status": "",
+    "cover": "cover-3",
+    "summary": "知识如何在具体实践共同体中生成。可用于理解研究训练、协作与身份变化。",
+    "tags": [
+      "学习",
+      "共同体"
+    ],
+    "url": "https://www.cambridge.org/core/books/situated-learning/",
+    "demo": true
+  }
+]
