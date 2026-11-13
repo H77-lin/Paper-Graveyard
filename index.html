@@ -1,75 +1,61 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hazel 的研究资料库：持续收录论文、书籍与研究线索。" />
-  <title>Paper-Graveyard / 研究资料库</title>
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal, evolving research library.">
+  <title>Paper-Graveyard — Research Library</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="site-shell">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
     <header class="topbar">
-      <a class="wordmark" href="#top">Paper-Graveyard</a>
-      <nav class="main-nav" aria-label="主导航">
-        <a href="#library">资料库</a>
-        <a href="#about">使用说明</a>
-      </nav>
-      <div class="top-meta mono">文献归档 · 2026</div>
+      <a class="wordmark" href="#home">Paper-Graveyard<span class="brand-dot" aria-hidden="true"></span></a>
+      <nav aria-label="Main navigation"><a href="#home" data-nav="home">Home</a><a href="#library" data-nav="library">Index <span aria-hidden="true">↗</span></a><a href="#guide" data-nav="guide">Guide</a></nav>
+      <span id="mode" class="mode mono">Connecting…</span>
     </header>
-
-    <main id="top">
-      <section class="hero">
-        <div class="hero-aside mono">A PERSONAL<br>RESEARCH ARCHIVE<br>NO. 001</div>
-        <div class="hero-main">
-          <p class="eyebrow">研究资料库 / Research Library</p>
-          <h1>让重要的<br><em>研究线索</em><br>再次被找到。</h1>
-          <p class="hero-lede">这里收录论文、书籍与长期研究主题。每一条资料都保留来源、摘要、主题与个人阅读状态，方便继续追踪和连接。</p>
-          <a class="button button-dark" href="#library">进入资料库 <span>↘</span></a>
-        </div>
-        <div class="hero-index">
-          <div class="index-rule"></div>
-          <p class="index-quote">“A good archive is a map for the next question.”</p>
-          <span class="mono">HZ / FIELD NOTE</span>
-        </div>
-      </section>
-
-      <section id="library" class="library-section">
-        <div class="section-head">
-          <div>
-            <span class="section-number mono">01 / LIBRARY</span>
-            <h2>全部资料</h2>
+    <main id="main" tabindex="-1">
+      <section id="home-view" hidden>
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow mono">A PERSONAL RESEARCH ARCHIVE / VOL. 01</p>
+            <h1>Research,<br>in <span class="motion-word">motion<span class="pill green">Always growing</span></span><span class="period">.</span></h1>
+            <p class="hero-description">Collect the evidence.<br>Connect the questions.<br>Make room for the next idea.</p>
+            <a class="round-link" href="#library"><span>Explore the index</span><span class="circle-arrow" aria-hidden="true">↗</span></a>
           </div>
-          <p class="section-intro">从文献出发，连接城市内涝、社会脆弱性与环境变化。中文概述由 AI 根据摘要或导言整理，待核对；原文信息可在每张卡片中追溯。</p>
+          <div class="hero-art" aria-hidden="true"><canvas id="thread-canvas"></canvas><span class="art-caption mono">THOUGHTS IN CONNECTION / MOVE TO EXPLORE</span></div>
+          <div class="hero-bottom mono"><span>COLLECT → READ → CONNECT</span><span id="home-stats"></span></div>
         </div>
-        <div class="toolbar">
-          <label class="search-box"><span class="mono" aria-hidden="true">⌕</span><input id="paper-search" type="search" aria-label="搜索资料" placeholder="搜索标题、作者、DOI、摘要或标签" /></label>
-          <div id="paper-filters" class="filter-list" role="group" aria-label="资料主题筛选"></div>
-        </div>
-        <div class="library-meta"><span id="paper-count" class="mono" role="status" aria-live="polite">正在加载…</span><button id="clear-filters" class="tag" type="button">清除所有筛选</button></div>
-        <p id="active-filter" class="mono" hidden></p>
-        <div id="paper-grid" class="paper-grid" aria-live="polite"></div>
+        <section class="home-index"><div class="section-heading"><h2>Your starting points<span class="pill green">Level 01</span></h2><a href="#library">Full index ↗</a></div><div id="home-folders" class="folder-list"></div></section>
       </section>
-
-      <section id="about" class="about-section">
-        <div>
-          <span class="section-number mono">02 / HOW TO USE</span>
-          <h2>一个会继续<br><em>生长的目录。</em></h2>
-        </div>
-        <div class="about-copy">
-          <p>这里收录文献的书目信息、来源链接与中文概述。个人阅读状态留空，由你在实际阅读后更新。打开“来源与校核”可以查看文件名称、概述依据和 DOI。</p>
-          <p class="mono instruction">ADD → REVIEW → CONNECT</p>
-        </div>
+      <section id="library-view" class="library-view" hidden>
+        <nav id="breadcrumbs" class="breadcrumbs mono" aria-label="Breadcrumb"></nav>
+        <div class="library-heading"><div><p id="level-label" class="eyebrow mono"></p><h1 id="folder-title"></h1><p id="folder-description" class="folder-description"></p></div><span id="folder-badge" class="pill green"></span></div>
+        <div class="editor-toolbar local-only" hidden><button type="button" data-action="add-category">+ New category</button><button type="button" id="edit-category" data-action="edit-category">Edit category</button><button type="button" class="primary" data-action="add-paper">+ Add paper</button><span class="toolbar-spacer"></span><button type="button" data-action="backup">Back up</button><button type="button" data-action="export">Export public site ↗</button></div>
+        <div id="folders" class="folder-list"></div>
+        <section id="category-overview" class="category-overview local-only" aria-label="Research overview" hidden></section>
+        <section class="papers-section" aria-labelledby="papers-heading">
+          <div class="section-heading"><h2 id="papers-heading">Reading room</h2><div class="scope-controls"><label class="scope-control"><input id="include-children" type="checkbox"> Include subcategories</label><label class="scope-control local-only" hidden><input id="notes-only" type="checkbox"> With my notes</label></div></div>
+          <div class="search-row"><label class="search-box"><span aria-hidden="true">⌕</span><input id="paper-search" type="search" placeholder="Search titles, authors, DOI or keywords…" aria-label="Search papers"></label><label class="topic-label"><span class="sr-only">Topic</span><select id="topic-filter" aria-label="Filter by topic"><option value="">All topics</option></select></label><button type="button" id="clear-filters">Reset</button></div>
+          <div class="result-meta mono"><span id="paper-count" role="status" aria-live="polite">Loading…</span><span id="tag-filter"></span></div>
+          <div id="paper-grid" class="paper-grid"></div>
+        </section>
       </section>
+      <section id="guide-view" class="guide-view" hidden>
+        <p class="eyebrow mono">A SMALL GUIDE / YOUR OWN SPACE</p><h1>Keep it<br>in progress<span class="green-text">.</span></h1>
+        <div class="guide-grid"><article><span class="pill green">01 / Organize</span><h2>Build your own index.</h2><p>Create and rename categories, then add subcategories at any level. Green marks the first level; yellow marks the next. Topics and tags connect papers across folders.</p></article><article><span class="pill yellow">02 / Record</span><h2>Write as you read.</h2><p>Open the local library to add papers, source links, abstracts and private reading notes. Save writes to a file on this computer. Your work is still here when you reopen the library.</p></article><article><span class="pill">03 / Keep</span><h2>A library for yourself.</h2><p>Use Back up for a complete private JSON copy. Automatic backups are made before each save. Public export includes only papers you explicitly approve, and excludes private notes and reading status.</p></article></div>
+        <p class="guide-note">Original paper titles and abstracts keep their source language. Imported AI summaries are marked for verification. A source link may lead to a publisher page rather than free full text.</p>
+        <a class="round-link" href="#library"><span>Back to the index</span><span class="circle-arrow">↗</span></a>
+      </section>
+      <p id="load-error" class="empty-state" role="alert" hidden></p>
     </main>
-
-    <footer class="footer">
-      <span>© 2026 HAZEL</span>
-      <a class="mono" href="https://github.com/H77-lin/Paper-Graveyard" target="_blank" rel="noopener noreferrer">GITHUB / 源代码 ↗</a>
-      <a href="#top">回到顶部 ↑</a>
-    </footer>
+    <footer class="footer mono"><span>HAZEL / PAPER-GRAVEYARD</span><span>A LIVING INDEX, NEVER FINISHED.</span><a href="#home">Back to home ↑</a></footer>
   </div>
+  <dialog id="editor" aria-labelledby="editor-title"><form id="editor-form"><div class="dialog-heading"><h2 id="editor-title"></h2><button type="button" data-action="close-editor" aria-label="Close editor">✕</button></div><div id="editor-fields"></div><p id="form-error" class="form-error" role="alert"></p><div class="dialog-footer"><span>Saved on this computer.</span><button type="button" data-action="close-editor">Cancel</button><button type="submit" class="primary" id="save-button">Save to computer ↗</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="gsap.min.js" defer></script>
   <script src="script.js" type="module"></script>
 </body>
 </html>

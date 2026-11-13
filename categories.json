@@ -1,0 +1,32 @@
+[
+  {
+    "id": "journals",
+    "name": "International Journals",
+    "parentId": null,
+    "description": "Journal articles and editorials, organized by research location."
+  },
+  {
+    "id": "shenzhen",
+    "name": "Shenzhen",
+    "parentId": "journals",
+    "description": "Research with an explicit focus on Shenzhen."
+  },
+  {
+    "id": "other-studies",
+    "name": "Other Regions & Cross-regional Studies",
+    "parentId": "journals",
+    "description": "Other locations and cross-regional studies. Add more categories as the archive grows."
+  },
+  {
+    "id": "preprints",
+    "name": "Preprints",
+    "parentId": null,
+    "description": "Preprints whose current publication status may need checking."
+  },
+  {
+    "id": "books",
+    "name": "Books & Chapters",
+    "parentId": null,
+    "description": "Foundations, methods and longer reference works."
+  }
+]
